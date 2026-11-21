@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b1220"><meta name="description" content="Telegram Rich Message Studio">
+  <title>RICH BUILDER — Telegram Studio</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="#dashboard"><div class="brandmark">R</div><div><b>RICH BUILDER</b><small>TELEGRAM STUDIO</small></div></a>
+    <div class="nav-label">WORKSPACE</div>
+    <nav id="mainNav">
+      <a class="active" href="#dashboard" data-page="dashboard"><span>◈</span> Ringkasan</a>
+      <a href="#destination" data-page="destination"><span>◎</span> Tujuan</a>
+      <a href="#editor" data-page="editor"><span>▤</span> Editor Pesan</a>
+      <a href="#preview" data-page="preview"><span>▣</span> Preview</a>
+      <a href="#delivery" data-page="delivery"><span>↗</span> Kirim Pesan</a>
+    </nav>
+    <div class="side-note"><span class="dot"></span> API CONNECTION<br><small>Telegram Bot API · Rich Messages</small></div>
+    <div class="side-bottom">RICH BUILDER <small>VERSION 3.0 · VERCEL READY</small></div>
+  </aside>
+  <main>
+    <header><div><div class="eyebrow">TELEGRAM MESSAGE WORKSPACE</div><h1 id="pageTitle">Ringkasan</h1><p id="pageDesc">Semua alat untuk menyusun dan menerbitkan pesan Telegram.</p></div><div class="status"><i></i><span id="headerStatus">SIAP DIGUNAKAN</span></div></header>
+    <section class="page active" id="page-dashboard" data-title="Ringkasan" data-desc="Semua alat untuk menyusun dan menerbitkan pesan Telegram.">
+      <section class="hero"><div><span class="pill">✦ TELEGRAM BOT API 10.3</span><h2>Publish with<br><em>more expression.</em></h2><p>Buat pesan terstruktur, tambahkan media dan tombol, pilih tujuan, lalu kirim langsung dari satu workspace.</p><button class="btn primary" data-go="editor">Mulai buat pesan <b>↗</b></button></div><div class="hero-art"><div class="orb orb1"></div><div class="orb orb2"></div><div class="mini-card"><div class="mini-top"><span></span><span></span><span></span><small>TELEGRAM / MESSAGE</small></div><div class="mini-title">Your next<br>announcement.</div><div class="mini-lines"><i></i><i></i><i></i></div><div class="mini-buttons"><b>Explore</b><b>Details</b></div></div></div></section>
+      <div class="stats-grid"><article class="stat-card"><span>BOT STATUS</span><b id="statBot">Belum dicek</b><small>Token server Vercel</small></article><article class="stat-card"><span>TARGET</span><b id="statTarget">Belum dipilih</b><small>Channel atau grup</small></article><article class="stat-card"><span>MESSAGE BLOCKS</span><b id="statBlocks">0</b><small>Elemen pesan tersusun</small></article></div>
+      <div class="quick-grid"><button class="quick-card" data-go="destination"><span>01</span><b>Hubungkan tujuan</b><small>Pilih grup atau channel Telegram</small><strong>→</strong></button><button class="quick-card" data-go="editor"><span>02</span><b>Susun pesan</b><small>Text, media, tabel, tombol, dan lainnya</small><strong>→</strong></button><button class="quick-card" data-go="delivery"><span>03</span><b>Terbitkan pesan</b><small>Atur opsi dan kirim ke target</small><strong>→</strong></button></div>
+    </section>
+    <section class="page" id="page-destination" data-title="Tujuan pengiriman" data-desc="Hubungkan bot ke grup atau channel yang kamu kelola.">
+      <div class="section-head"><div><div class="eyebrow">STEP 01 / CONNECT</div><h2>Hubungkan bot & tujuan</h2><p>Bot harus ditambahkan ke chat oleh pengguna yang punya izin mengelola chat.</p></div><span class="step">01</span></div>
+      <section class="panel destination">
+        <div class="field wide"><label>IDENTITAS BOT</label><div class="inline"><input id="botUsername" placeholder="Klik Periksa bot untuk memuat identitas" readonly><button class="btn soft" id="loadBot">Periksa bot</button></div><small>Token dibaca server dari Environment Variables Vercel (BOT_TOKEN). Token tidak pernah dikirim ke browser.</small></div>
+        <div class="field wide"><label>TAMBAHKAN BOT KE TELEGRAM</label><div class="add-target-grid"><button id="addGroup" class="add-tile" disabled><span>＋</span><b>Tambahkan ke Group</b><small>Pilih grup dan atur hak akses bot di Telegram</small><strong>BUKA TELEGRAM ↗</strong></button><button id="addChannel" class="add-tile" disabled><span>＋</span><b>Tambahkan ke Channel</b><small>Pilih channel dan jadikan bot admin</small><strong>BUKA TELEGRAM ↗</strong></button></div><small>Telegram tetap meminta pemilik/admin memilih chat dan menyetujui hak bot. Website tidak dapat menaikkan bot menjadi admin sendiri.</small></div>
+        <div class="field"><label>JENIS TUJUAN</label><div class="segmented"><button class="selected" data-type="group">Group</button><button data-type="channel">Channel</button></div></div>
+        <div class="field"><label>USERNAME / CHAT ID</label><input id="target" placeholder="@username atau -1001234567890"><small>Chat privat biasanya memakai ID numerik setelah bot ditambahkan.</small></div>
+        <div class="target-actions wide"><button id="verify" class="btn outline">Verifikasi tujuan</button><span id="verifyStatus" class="muted">Belum diverifikasi</span></div>
+        <div class="target-info wide" id="targetInfo" hidden></div>
+        <div class="diag wide" id="diagBox">Memeriksa konfigurasi server…</div>
+      </section>
+    </section>
+    <section class="page" id="page-editor" data-title="Editor pesan" data-desc="Bangun pesan menggunakan blok Rich Message Telegram.">
+      <div class="section-head"><div><div class="eyebrow">STEP 02 / COMPOSE</div><h2>Bangun pesan Rich</h2><p>Pilih blok, isi konten, lalu atur urutannya.</p></div><span class="step">02</span></div>
+      <section class="workspace"><div class="panel editor-panel"><div class="panel-title"><div><b>Message builder</b><small>Tambahkan elemen ke pesan</small></div><div class="tools"><button class="btn soft small" id="exportDraft">Ekspor</button><label class="btn soft small file-btn">Impor<input type="file" id="importDraft" accept="application/json" hidden></label><button class="btn soft small" id="clear">Reset pesan</button></div></div>
+        <div class="toolbar"><button data-block="heading"><b>H</b><span>Judul</span></button><button data-block="paragraph"><b>¶</b><span>Text</span></button><button data-block="quote"><b>❞</b><span>Kutipan</span></button><button data-block="list"><b>☷</b><span>List</span></button><button data-block="table"><b>▦</b><span>Tabel</span></button><button data-block="buttons"><b>▱</b><span>Tombol</span></button><button data-block="photo"><b>▧</b><span>Foto</span></button><button data-block="video"><b>▶</b><span>Video</span></button><button data-block="animation"><b>GIF</b><span>Animasi</span></button><button data-block="map"><b>⌖</b><span>Lokasi</span></button><button data-block="details"><b>⌄</b><span>Detail</span></button><button data-block="divider"><b>—</b><span>Pemisah</span></button></div>
+        <div id="blocks" class="blocks"><div class="empty">Belum ada blok. Pilih elemen di atas untuk mulai.</div></div><div class="editor-foot"><span id="blockCount">0 BLOCK</span><span>Autosave di perangkat ini</span></div>
+      </div><div class="preview-column"><div class="preview-label"><span>LIVE PREVIEW</span><span class="live-dot">● LIVE</span></div><div class="phone"><div class="phone-head"><span>‹</span><b id="previewChatName">Telegram Preview</b><small>bot</small></div><div class="chat-bg"><div id="previewMessage" class="tg-message"><div class="empty-preview">Pesan kamu akan tampil di sini.</div><div class="time">Sekarang ✓✓</div></div></div><div class="phone-input">Message <span>＋　☺　➤</span></div></div><div class="preview-hint">Preview merupakan gambaran visual. Tampilan akhir mengikuti versi aplikasi Telegram.</div></div></section>
+    </section>
+    <section class="page" id="page-preview" data-title="Preview pesan" data-desc="Tinjau hasil susunan pesan sebelum diterbitkan."><div class="preview-page panel"><div><div class="eyebrow">MESSAGE PREVIEW</div><h2>Periksa sebelum kirim</h2><p>Perubahan di editor akan langsung terlihat di sini.</p></div><div class="phone large-phone"><div class="phone-head"><span>‹</span><b id="previewChatName2">Telegram Preview</b><small>bot</small></div><div class="chat-bg"><div id="previewMessage2" class="tg-message"><div class="empty-preview">Pesan kamu akan tampil di sini.</div><div class="time">Sekarang ✓✓</div></div></div><div class="phone-input">Message <span>＋　☺　➤</span></div></div><button class="btn primary" data-go="delivery">Lanjut ke pengiriman ↗</button></div></section>
+    <section class="page" id="page-delivery" data-title="Kirim pesan" data-desc="Pilih opsi publikasi dan kirim pesan ke tujuan yang sudah diverifikasi."><div class="section-head"><div><div class="eyebrow">STEP 03 / PUBLISH</div><h2>Konfirmasi & kirim</h2><p>Pastikan bot sudah menjadi anggota dan memiliki izin yang diperlukan.</p></div><span class="step">03</span></div>
+      <section class="panel delivery-panel"><div class="delivery-summary"><span class="summary-icon">↗</span><div><b>Ringkasan pengiriman</b><p id="sendSummary">Tambahkan blok dan verifikasi tujuan terlebih dahulu.</p></div></div><div class="delivery-options"><label class="option"><input type="checkbox" id="silent"> <span><b>Kirim tanpa suara</b><small>Notifikasi penerima tidak berbunyi</small></span></label><label class="option"><input type="checkbox" id="protect"> <span><b>Lindungi konten</b><small>Batasi penerusan dan penyimpanan pesan</small></span></label></div><div class="send-actions"><button id="send" class="btn primary" disabled>Kirim Rich Message <span>↗</span></button><button class="btn soft" data-go="preview">Lihat preview</button></div><div id="result" class="result" aria-live="polite"></div>
+      <div class="history-head">RIWAYAT KIRIM <small>disimpan di perangkat ini</small></div><div id="history" class="history"></div></section>
+    </section>
+    <footer>RICH BUILDER <span>Telegram Bot API · Vercel-ready</span></footer>
+  </main>
+</div><div id="toasts" class="toasts" aria-live="polite"></div><script src="/app.js"></script></body></html>
